@@ -84,7 +84,7 @@ with tab1:
             # zoom around the winning offset so the spike is visible
             best_offset = max(counter, key=counter.get)
             colors = ["tomato" if o == best_offset else "steelblue" for o in offsets]
-            ax.set_xlim(best_offset - 100, best_offset + 100)
+            ax.set_xlim(best_offset - 100, best_offset + 200)
         ax.set_xlabel("Time offset (t_database - t_query)")
         ax.set_ylabel("Matching hash count")
         ax.set_title("Offset Histogram")
