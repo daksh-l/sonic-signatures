@@ -31,7 +31,7 @@ def identify(clip, fs):
     return f, t, Sxx_db, freq_idx, time_idx, matched, score, offset_counts
 
 st.title("Sonic Signatures")
-st.write("Submission by Daksh Leekha (250307) and Kanishk Parmar")
+st.write("Submission by: Daksh Leekha (250307) and Kanishk Parmar")
 st.write(f"Database: {song_count} songs")
 
 tab1, tab2 = st.tabs(["Single clip", "Batch"])
@@ -83,8 +83,7 @@ with tab1:
 
             # zoom around the winning offset so the spike is visible
             best_offset = max(counter, key=counter.get)
-            colors = ["tomato" if o == best_offset else "steelblue" for o in offsets]
-            ax.set_xlim(best_offset - 100, best_offset + 200)
+            ax.set_xlim(best_offset - 100, best_offset + 100)
         ax.set_xlabel("Time offset (t_database - t_query)")
         ax.set_ylabel("Matching hash count")
         ax.set_title("Offset Histogram")
