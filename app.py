@@ -20,6 +20,7 @@ database = load_database()
 song_count = len({s for hits in database.values() for s, _ in hits})
 
 def load_clip(f):
+    # limiting duration to 30s for saving RAM and faster response
     clip, fs = librosa.load(f, sr=SAMPLE_RATE, mono=True, duration=30)
     return clip, fs
 
@@ -30,6 +31,7 @@ def identify(clip, fs):
     return f, t, Sxx_db, freq_idx, time_idx, matched, score, offset_counts
 
 st.title("Sonic Signatures")
+st.write("Submission by Daksh Leekha (250307) and Kanishk Parmar")
 st.write(f"Database: {song_count} songs")
 
 tab1, tab2 = st.tabs(["Single clip", "Batch"])

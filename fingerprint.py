@@ -1,11 +1,8 @@
 """
 Core audio fingerprinting functions for the song identifier.
 
-This module contains the full pipeline:
-spectrogram -> peak picking -> hashing -> database matching.
-
-Logic is unchanged from the Colab notebook (EE200 Q3A); this file just
-collects everything into one importable place for the Streamlit app.
+This file contains the full pipeline:
+spectrogram -> peak picking -> hashing -> database matching
 """
 
 import numpy as np
@@ -13,12 +10,12 @@ from scipy.signal import spectrogram
 from scipy.ndimage import maximum_filter
 from collections import Counter
 
-# ----- fixed parameters used throughout (same as in the notebook) -----
+# fixed parameters used throughout (same as in the notebook)
 SAMPLE_RATE = 22050
 NPERSEG = 2048
 NOVERLAP = 1024
-NEIGHBORHOOD_SIZE = 15
-THRESHOLD = -40
+NEIGHBORHOOD_SIZE = 10
+THRESHOLD = -50
 FAN_VALUE = 5
 
 
@@ -55,9 +52,9 @@ def generate_hashes(freq_idx, time_idx, fan_value=FAN_VALUE):
 
     return hashes
 
-
+# NOT USED right now, but used to add songs while making database
 def add_song_to_database(database, song_id, freq_idx, time_idx, fan_value=FAN_VALUE):
-    """Adds one song's hashes into the shared database dict."""
+    """Adds one song's hashes into the shared database"""
     hashes = generate_hashes(freq_idx, time_idx, fan_value=fan_value)
 
     for f1, f2, delta_t, t1 in hashes:
