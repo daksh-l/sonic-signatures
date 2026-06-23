@@ -100,14 +100,3 @@ def match_song(query_freq_idx, query_time_idx, database, fan_value=FAN_VALUE):
             best_song = song_id
 
     return best_song, best_score, offset_counts
-
-
-def fingerprint_clip(clip, fs=SAMPLE_RATE):
-    """
-    Full pipeline for one clip: spectrogram -> peaks.
-    Returns f, t, Sxx_db, freq_idx, time_idx -- everything needed both
-    for matching and for plotting the intermediate steps.
-    """
-    f, t, Sxx_db = compute_spectrogram(clip, fs=fs)
-    freq_idx, time_idx = find_peaks(Sxx_db)
-    return f, t, Sxx_db, freq_idx, time_idx
