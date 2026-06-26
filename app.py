@@ -31,7 +31,7 @@ def identify(clip, fs):
     return f, t, Sxx_db, freq_idx, time_idx, matched, score, offset_counts
 
 st.title("Sonic Signatures")
-st.write("Submission by: Daksh Leekha (250307) and Kanishk Parmar")
+st.write("Submission by: Daksh Leekha (250307) and Kanishk Parmar (250502)")
 st.write(f"Database: {song_count} songs")
 
 tab1, tab2 = st.tabs(["Single clip", "Batch"])

@@ -52,17 +52,6 @@ def generate_hashes(freq_idx, time_idx, fan_value=FAN_VALUE):
 
     return hashes
 
-# NOT USED right now, but used to add songs while making database
-def add_song_to_database(database, song_id, freq_idx, time_idx, fan_value=FAN_VALUE):
-    """Adds one song's hashes into the shared database"""
-    hashes = generate_hashes(freq_idx, time_idx, fan_value=fan_value)
-
-    for f1, f2, delta_t, t1 in hashes:
-        hash_key = (f1, f2, delta_t)
-        if hash_key not in database:
-            database[hash_key] = []
-        database[hash_key].append((song_id, t1))
-
 
 def match_song(query_freq_idx, query_time_idx, database, fan_value=FAN_VALUE):
     """
